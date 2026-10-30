@@ -46,8 +46,12 @@ screw section and most of the thin bracket print solid. The sparse infill only
 reaches the thicker lower plate, which keeps the part strong while saving time
 and filament. Expect about 2 hours.
 
+Sliced with [`slice.ps1`](https://github.com/GregWoods/3d-print-workflow/blob/master/slice.ps1)
+from [3d-print-workflow](https://github.com/GregWoods/3d-print-workflow), which
+holds the PrusaSlicer profiles for the Ender-3 S1 Pro:
+
 ```powershell
-& "Z:\greg\3D Design and Print\slice.ps1" -StlFile waste-food-bin-hook.stl `
+& path\to\3d-print-workflow\slice.ps1 -StlFile waste-food-bin-hook.stl `
     -NozzleDia 0.6 -Quality fast -Strength strong -Walls 4 -Infill 10 -AdhesionType brim
 ```
 
