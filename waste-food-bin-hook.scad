@@ -28,6 +28,13 @@ head_d        = 8.5;   // countersink diameter at the front face
 hole_from_top = frame_h / 2;   // screw hole distance below the plate top (default: centred on the frame section)
 hole_inset    = 22;    // screw hole distance from each end
 
+// Optional shallow pocket in the rear packing for a piece of double-sided tape.
+tape_recess   = true;
+tape_w        = 45;    // along the rail, centred
+tape_h        = 34;    // vertical
+tape_depth    = 1;
+tape_from_bottom = 30; // plate bottom edge to the bottom of the pocket
+
 print_upright = true;
 
 // Test piece: a thin full-height slice of the profile — the same layers as the
@@ -46,6 +53,7 @@ rail_y = plate_t + slot_w + rail_r;   // rail centre distance from the door
 cs_depth = (head_d - hole_d) / 2;     // 90° countersink
 hole_z = plate_h - hole_from_top;
 assert(hole_z - head_d / 2 > panel_top_z, "screw holes must sit above the panel, on the frame");
+assert(!tape_recess || tape_from_bottom + tape_h < panel_top_z - step_chamfer, "tape pocket must sit within the rear packing");
 
 // ---------- geometry ----------
 // Every feature runs the full length with square ends, so printed upright the
@@ -99,6 +107,9 @@ module hook() {
         }
         for (x = [hole_inset, length - hole_inset])
             translate([x, 0, hole_z]) screw_hole();
+        if (tape_recess)
+            translate([(length - tape_w) / 2, -panel_recess - 1, tape_from_bottom])
+                cube([tape_w, tape_depth + 1, tape_h]);
     }
 }
 

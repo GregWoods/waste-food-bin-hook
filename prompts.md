@@ -20,3 +20,6 @@
 17. when slicing i want to keep it strong but reduce print time and filament usage. Would thicker walls with only 10% infill work?
 18. yes, add -Walls and -Infill overrides
 19. if 4 walls is solid up to 4.0mm, then lets change the model so that the screwhole section is 4.0mm thick
+20. i want to add a shallow recess to the back of the piece, 30mm from the bottom edge, centered horizontally, 30x40mm, 1mm deep. It is an optional place for a piece of sticky tape
+21. have the wider side widthways
+22. make it 34 x 45
